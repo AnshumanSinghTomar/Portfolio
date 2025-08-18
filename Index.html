@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anshuman Singh Tomar - Portfolio</title>
+  <link rel="stylesheet" href="Style.css" />
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    <nav class="navbar">
+      <div class="logo">Anshuman Singh Tomar</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Hi, I'm <span class="typing-text"></span></h1>
+    <p>Web Developer | Designer | Ethical Hacker</p>
+    <a href="resume.pdf" download class="btn">Download Resume</a>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="container">
+    <h2>About Me</h2>
+    <p>
+      I'm a passionate web and app developer driven by curiosity and a love for continuous learning.
+      With keen interest in cybersecurity, public speaking, and sports, I bring creativity and teamwork into both
+      technical and personal projects.
+    </p>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills" class="container">
+    <h2>Skills & Interests</h2>
+    <div class="grid">
+      <div class="card">💻 Web & App Development</div>
+      <div class="card">🔐 Cybersecurity & Ethical Hacking</div>
+      <div class="card">🎤 Public Speaking</div>
+      <div class="card">🏏 Sports Enthusiast</div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="container">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>Chikitsak Mobile Application</h3>
+        <p>A healthcare app for booking doctor appointments, managing OPD schedules, and locating pharmacies.</p>
+        <a href="#">GitHub</a>
+      </div>
+      <div class="project-card">
+        <h3>Portfolio Website</h3>
+        <p>My personal portfolio site built with HTML, CSS, and JS featuring responsive design and animations.</p>
+        <a href="#">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section id="contact" class="container">
+    <h2>Contact Me</h2>
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Your Name" required />
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Your Email" required />
+
+      <label for="message">Message</label>
+      <textarea id="message" placeholder="Your Message" required></textarea>
+
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+
+    <div class="social-links">
+      <a href="mailto:anshuman.s.tomar@gmail.com">Email</a>
+      <a href="https://github.com/AnshumanSinghTomar" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/anshumanstomar/" target="_blank">LinkedIn</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Anshuman Singh Tomar | All Rights Reserved</p>
+    <button id="scrollTopBtn">⬆</button>
+  </footer>
+
+  <!-- JavaScript Features -->
+  <script src="Script.js"></script>
+</body>
+</html>
