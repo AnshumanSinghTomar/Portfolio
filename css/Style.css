@@ -140,6 +140,27 @@ footer {
   display:none;
 }
 
+
+.experience-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:2rem;
+}
+.experience-card {
+  background:#fff;
+  padding:1.5rem;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+.experience-card a {
+  display:inline-block; 
+  margin-top:1rem; 
+  color:#3498db; 
+  font-weight:600;
+  text-decoration:none;
+}
+.experience-card a:hover {color:#2980b9;}
+
 /* Responsive */
 @media (max-width:768px){
   .nav-links {flex-direction:column; background:#fff;}
