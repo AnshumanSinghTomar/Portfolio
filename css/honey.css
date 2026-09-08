@@ -2624,6 +2624,11 @@ body.page-entered .launch-statement { transition-delay: .37s; }
 body.page-entered .launch-actions { transition-delay: .44s; }
 @media (max-width: 640px) {
   .launch-portrait { width: 92px; margin-bottom: 18px; }
+  .js.motion-ok .launch-portrait {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   .launch-portrait { opacity: 1 !important; transform: none !important; transition: none !important; }
