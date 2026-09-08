@@ -1831,21 +1831,40 @@ body.page-entered .launch-card:nth-child(4) { transition-delay: .66s; }
 
 @media (max-width: 640px) {
   .launch-hero {
-    min-height: auto;
-    padding: 112px 20px 68px;
+    min-height: 100svh;
+    padding: 88px 20px 44px;
+    place-items: start center;
   }
-  .launch-name { font-size: clamp(44px, 15vw, 70px); letter-spacing: -.055em; }
+  #page-intro { display: none; }
+  .js.motion-ok .launch-availability,
+  .js.motion-ok .launch-portrait,
+  .js.motion-ok .launch-name,
+  .js.motion-ok .launch-role,
+  .js.motion-ok .launch-statement,
+  .js.motion-ok .launch-actions,
+  .js.motion-ok .launch-card {
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+  .launch-inner { width: 100%; }
+  .launch-availability { margin-bottom: 18px; letter-spacing: .16em; }
+  .launch-portrait { width: 92px; margin-bottom: 18px; }
+  .launch-name { font-size: clamp(42px, 14vw, 64px); letter-spacing: -.055em; }
+  .launch-role { margin-top: 14px; }
   .launch-statement { max-width: 30ch; line-height: 1.6; }
-  .launch-actions { width: 100%; display: grid; grid-template-columns: 1fr 1fr; }
+  .launch-actions { width: 100%; display: grid; grid-template-columns: 1fr 1fr; margin-top: 26px; }
   .launch-action { width: 100%; padding: 0 12px; }
   .launch-action--primary { grid-column: 1 / -1; }
-  .launch-status { grid-template-columns: 1fr 1fr; margin-top: 58px; }
-  .launch-card { min-height: 76px; }
+  .launch-status { grid-template-columns: 1fr 1fr; margin-top: 34px; }
+  .launch-card { min-height: 68px; }
+  .launch-card > span { font-size: 7px; letter-spacing: .16em; }
 }
 
 @media (max-width: 390px) {
-  .launch-actions,
-  .launch-status { grid-template-columns: 1fr; }
+  .launch-actions { grid-template-columns: 1fr; }
+  .launch-status { grid-template-columns: repeat(2, 1fr); }
   .launch-action--primary { grid-column: auto; }
 }
 
@@ -2603,7 +2622,7 @@ body.page-entered .launch-role { transition-delay: .30s; }
 body.page-entered .launch-statement { transition-delay: .37s; }
 body.page-entered .launch-actions { transition-delay: .44s; }
 @media (max-width: 640px) {
-  .launch-portrait { width: 108px; margin-bottom: 22px; }
+  .launch-portrait { width: 92px; margin-bottom: 18px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .launch-portrait { opacity: 1 !important; transform: none !important; transition: none !important; }
