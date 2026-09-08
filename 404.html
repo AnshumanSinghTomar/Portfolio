@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>404 — Anshuman Singh Tomar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --black:#000; --white:#f5f5f0; --muted:rgba(245,245,240,.55); --rule:rgba(245,245,240,.3); --mono:'JetBrains Mono',monospace; --serif:'Playfair Display',Georgia,serif; --sans:'Space Grotesk',sans-serif; }
+    * { box-sizing:border-box; margin:0; }
+    html, body { min-height:100%; overflow-x:clip; }
+    body { min-height:100vh; display:grid; place-items:center; padding:24px; background:var(--black); color:var(--white); font-family:var(--sans); }
+    main { width:min(100%,720px); position:relative; padding:clamp(32px,8vw,88px) 0; }
+    main::before { content:''; position:absolute; left:-24px; top:0; bottom:0; width:1px; background:var(--white); box-shadow:0 0 18px rgba(245,245,240,.35); }
+    .eyebrow { color:var(--muted); font:10px/1 var(--mono); letter-spacing:.16em; }
+    h1 { margin:20px 0 18px; font:900 clamp(96px,24vw,220px)/.74 var(--serif); letter-spacing:-.07em; }
+    h1 span { font-style:italic; }
+    p { max-width:42ch; color:var(--muted); font-size:clamp(16px,2vw,19px); line-height:1.7; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:34px; }
+    a { display:inline-flex; align-items:center; gap:9px; min-height:44px; padding:11px 16px; border:1px solid var(--rule); color:var(--white); font:500 11px/1 var(--mono); letter-spacing:.11em; text-decoration:none; transition:background .2s,color .2s,border-color .2s,transform .2s; }
+    a:hover, a:focus-visible { background:var(--white); border-color:var(--white); color:var(--black); transform:translateY(-2px); }
+    a:focus-visible { outline:2px solid var(--white); outline-offset:4px; }
+    .footnote { margin-top:72px; color:rgba(245,245,240,.28); font:9px/1.5 var(--mono); letter-spacing:.12em; }
+    @media (max-width:480px) { body { padding:20px; } main::before { left:-12px; } .actions { flex-direction:column; } a { justify-content:center; } }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">[ ERROR / 404 ] &mdash; LOST IN THE SOURCE</div>
+    <h1>4<span>0</span>4</h1>
+    <p>This page doesn&rsquo;t exist, or it may have moved. Let&rsquo;s get you back to the portfolio.</p>
+    <div class="actions">
+      <a href="index.html">&larr; HOME</a>
+      <a href="index.html#contact">GET IN TOUCH &nearr;</a>
+    </div>
+    <div class="footnote">ANSHUMAN SINGH TOMAR &middot; FULL-STACK &amp; AI DEVELOPER</div>
+  </main>
+</body>
+</html>

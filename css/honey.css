@@ -19,21 +19,39 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-x: clip;
+  scroll-behavior: smooth;
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration:.01ms!important; transition-duration:.01ms!important; }
 }
 
 body {
+  max-width: 100%;
   background: var(--black);
   color: var(--white);
   font-family: var(--sans);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  overflow-x: clip;
   cursor: none;
 }
+
+img, svg, video, canvas { max-width: 100%; }
+.h-section,
+.two-col,
+.col-left,
+.col-right,
+.project-block,
+.exp-item,
+.cred-item,
+.journey-card,
+.contact-cols { min-width: 0; }
 
 a, button, input, textarea, select { cursor: none; }
 
@@ -571,6 +589,7 @@ a { color: inherit; text-decoration: none; }
 }
 @media (max-width: 640px) {
   :root             { --pad: 20px; }
+  .h-section        { width: 100%; overflow: clip; }
   .nav-links        { display: none; }
   .h-section        { padding-top: 80px; }
   .stat-row         { grid-template-columns: 1fr; }
@@ -578,6 +597,13 @@ a { color: inherit; text-decoration: none; }
   .cred-item        { grid-template-columns: 1fr; gap: 4px; }
   .skill-group-h    { grid-template-columns: 1fr; }
   .footer-right     { gap: 16px; }
+  .exp-list li,
+  .cred-name,
+  .cred-type,
+  .journey-event-body,
+  .journey-event-body p { overflow-wrap: anywhere; }
+  .nav-inner        { gap: 12px; }
+  .nav-brand        { overflow: hidden; text-overflow: ellipsis; }
 }
 
 /* ============================================================
