@@ -2605,13 +2605,13 @@ body:not(.past-launch) #section-counter { opacity: 0 !important; visibility: hid
   height: 100%;
   display: block;
   object-fit: cover;
-  object-position: 44% 36%;
+  object-position: 50% 40%;
   filter: saturate(.9) contrast(1.04);
-  transform: scale(1.9);
-  transform-origin: 44% 36%;
+  transform: scale(1.65);
+  transform-origin: 50% 40%;
   transition: transform .6s var(--spring-ease), filter .4s ease;
 }
-.launch-portrait:hover img { transform: scale(2.02); filter: saturate(1.05) contrast(1.04); }
+.launch-portrait:hover img { transform: scale(1.75); filter: saturate(1.05) contrast(1.04); }
 .js.motion-ok .launch-portrait { opacity: .001; transform: translateY(25px) scale(.9); }
 body.page-entered .launch-portrait {
   opacity: 1;
@@ -2632,5 +2632,5 @@ body.page-entered .launch-actions { transition-delay: .44s; }
 }
 @media (prefers-reduced-motion: reduce) {
   .launch-portrait { opacity: 1 !important; transform: none !important; transition: none !important; }
-  .launch-portrait img { transform: scale(1.9); transition: none; }
+  .launch-portrait img { transform: scale(1.65); transition: none; }
 }
