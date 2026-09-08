@@ -937,6 +937,64 @@ body.menu-open .nav-toggle span:last-child { transform: translateY(-3.5px) rotat
   .nav-right .nav-cta { padding: 8px; font-size: 9px; }
 }
 
+/* On mobile, primary navigation becomes a compact right-side dropdown. */
+@media (max-width: 900px) {
+.nav-links { display: none; }
+.nav-toggle { display: flex; }
+.mobile-menu {
+  inset: auto;
+  position: absolute;
+  top: calc(100% + 1px);
+  right: max(var(--pad), calc((100vw - var(--maxw)) / 2 + var(--pad)));
+  z-index: 99;
+  width: min(330px, calc(100vw - (var(--pad) * 2)));
+  max-height: calc(100svh - 86px);
+  display: flex;
+  flex-direction: column;
+  padding: 10px 16px;
+  overflow-y: auto;
+  border: 1px solid var(--rule-s);
+  background: rgba(0, 0, 0, .98);
+  box-shadow: 0 22px 52px rgba(0, 0, 0, .48);
+  visibility: hidden;
+  opacity: 0;
+  clip-path: none;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity .2s ease, transform .28s var(--spring-ease), visibility 0s linear .28s;
+}
+.mobile-menu a {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 13px 2px;
+  border-bottom: 1px solid var(--rule);
+  color: var(--white-d);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  line-height: 1.2;
+  opacity: 1;
+  transform: none;
+  transition: color .2s ease, padding-left .25s var(--spring-ease);
+}
+.mobile-menu a:last-child { border-bottom: 0; }
+.mobile-menu a span { color: var(--accent); font-family: var(--mono); font-size: 9px; }
+.mobile-menu a:hover,
+.mobile-menu a:focus-visible { padding-left: 9px; color: var(--white); }
+body.menu-open { overflow-x: clip; overflow-y: auto; }
+body.menu-open .mobile-menu {
+  visibility: visible;
+  opacity: 1;
+  clip-path: none;
+  transform: translateY(0);
+  pointer-events: auto;
+  transition-delay: 0s;
+}
+body.menu-open .mobile-menu a { opacity: 1; transform: none; transition-delay: 0s; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   #page-intro { display: none; }
   body:not(.page-entered) .h1-line-inner,

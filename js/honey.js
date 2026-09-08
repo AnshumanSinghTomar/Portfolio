@@ -127,7 +127,7 @@
       });
   }
 
-  /* Accessible mobile menu with focus containment and scroll locking. */
+  /* Accessible mobile navigation dropdown with focus containment. */
   const menuToggle = document.querySelector('.nav-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   let menuOpen = false;
@@ -168,10 +168,6 @@
       menuToggle.focus();
     }
   });
-  window.addEventListener('resize', () => {
-    if (menuOpen && window.innerWidth > 900) setMenu(false);
-  }, { passive: true });
-
   /* Entrance observers. */
   const motionTargets = Array.from(document.querySelectorAll('.reveal, .reveal-l, .stagger, .card-reveal'));
   if (reduced || !('IntersectionObserver' in window)) {
@@ -256,6 +252,9 @@
     });
     if (window.location.hash !== hash) history.pushState(null, '', hash);
   });
+  window.addEventListener('resize', () => {
+    if (menuOpen && window.innerWidth > 900) setMenu(false);
+  }, { passive: true });
 
   /* Fine-pointer-only custom cursor with contextual states. */
   const dot = document.getElementById('cursor-dot');
