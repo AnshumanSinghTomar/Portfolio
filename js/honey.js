@@ -22,50 +22,47 @@
   if (reduced) enterPage();
   else window.setTimeout(enterPage, 650);
 
-  /* Pixel transition for the opening portrait: hover/focus on fine pointers, tap on touch devices. */
-  const pixelPortrait = document.querySelector('.pixel-transition');
-  if (pixelPortrait) {
-    const pixelLayer = pixelPortrait.querySelector('.pixel-transition__pixels');
-    const pixelDetails = pixelPortrait.querySelector('.pixel-transition__details');
-    let portraitActive = false;
-    let portraitTimer = 0;
+  /* ProfileCard-inspired portrait: a fine-pointer tilt, sheen and cursor-following glow. */
+  const profilePortrait = document.querySelector('.profile-card');
+  if (profilePortrait && !reduced) {
+    let portraitFrame = 0;
+    let portraitX = 50;
+    let portraitY = 50;
 
-    for (let index = 0; index < 64; index += 1) {
-      const pixel = document.createElement('span');
-      pixel.className = 'pixel-transition__pixel';
-      pixel.style.setProperty('--pixel-delay', `${Math.round(Math.random() * 170)}ms`);
-      pixelLayer?.appendChild(pixel);
+    function drawPortraitTilt() {
+      portraitFrame = 0;
+      profilePortrait.style.setProperty('--profile-x', `${portraitX}%`);
+      profilePortrait.style.setProperty('--profile-y', `${portraitY}%`);
+      profilePortrait.style.setProperty('--profile-rotate-x', `${(portraitX - 50) / 7}deg`);
+      profilePortrait.style.setProperty('--profile-rotate-y', `${(50 - portraitY) / 8}deg`);
     }
 
-    function setPortraitState(active) {
-      if (portraitActive === active) return;
-      portraitActive = active;
-      window.clearTimeout(portraitTimer);
-      pixelPortrait.classList.remove('is-transitioning');
-      void pixelPortrait.offsetWidth;
-      pixelPortrait.classList.add('is-transitioning');
-      window.setTimeout(() => {
-        pixelPortrait.classList.toggle('is-active', active);
-        pixelPortrait.setAttribute('aria-pressed', String(active));
-        pixelDetails?.setAttribute('aria-hidden', String(!active));
-      }, reduced ? 0 : 170);
-      portraitTimer = window.setTimeout(() => pixelPortrait.classList.remove('is-transitioning'), reduced ? 0 : 520);
+    function updatePortraitTilt(event) {
+      const bounds = profilePortrait.getBoundingClientRect();
+      portraitX = Math.max(0, Math.min(100, ((event.clientX - bounds.left) / bounds.width) * 100));
+      portraitY = Math.max(0, Math.min(100, ((event.clientY - bounds.top) / bounds.height) * 100));
+      if (!portraitFrame) portraitFrame = window.requestAnimationFrame(drawPortraitTilt);
+    }
+
+    function resetPortraitTilt() {
+      portraitX = 50;
+      portraitY = 50;
+      profilePortrait.classList.remove('is-active');
+      if (!portraitFrame) portraitFrame = window.requestAnimationFrame(drawPortraitTilt);
     }
 
     if (finePointer) {
-      pixelPortrait.addEventListener('pointerenter', () => setPortraitState(true));
-      pixelPortrait.addEventListener('pointerleave', () => setPortraitState(false));
-      pixelPortrait.addEventListener('focus', () => setPortraitState(true));
-      pixelPortrait.addEventListener('blur', () => setPortraitState(false));
+      profilePortrait.addEventListener('pointerenter', (event) => {
+        profilePortrait.classList.add('is-active');
+        updatePortraitTilt(event);
+      });
+      profilePortrait.addEventListener('pointermove', updatePortraitTilt);
+      profilePortrait.addEventListener('pointerleave', resetPortraitTilt);
     } else {
-      pixelPortrait.addEventListener('click', () => setPortraitState(!portraitActive));
+      profilePortrait.addEventListener('click', () => profilePortrait.classList.toggle('is-active'));
     }
-    pixelPortrait.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        setPortraitState(!portraitActive);
-      }
-    });
+    profilePortrait.addEventListener('focus', () => profilePortrait.classList.add('is-active'));
+    profilePortrait.addEventListener('blur', resetPortraitTilt);
   }
 
   /* Add reusable motion hooks while preserving no-JS visibility. */
