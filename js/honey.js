@@ -22,6 +22,52 @@
   if (reduced) enterPage();
   else window.setTimeout(enterPage, 650);
 
+  /* Pixel transition for the opening portrait: hover/focus on fine pointers, tap on touch devices. */
+  const pixelPortrait = document.querySelector('.pixel-transition');
+  if (pixelPortrait) {
+    const pixelLayer = pixelPortrait.querySelector('.pixel-transition__pixels');
+    const pixelDetails = pixelPortrait.querySelector('.pixel-transition__details');
+    let portraitActive = false;
+    let portraitTimer = 0;
+
+    for (let index = 0; index < 64; index += 1) {
+      const pixel = document.createElement('span');
+      pixel.className = 'pixel-transition__pixel';
+      pixel.style.setProperty('--pixel-delay', `${Math.round(Math.random() * 170)}ms`);
+      pixelLayer?.appendChild(pixel);
+    }
+
+    function setPortraitState(active) {
+      if (portraitActive === active) return;
+      portraitActive = active;
+      window.clearTimeout(portraitTimer);
+      pixelPortrait.classList.remove('is-transitioning');
+      void pixelPortrait.offsetWidth;
+      pixelPortrait.classList.add('is-transitioning');
+      window.setTimeout(() => {
+        pixelPortrait.classList.toggle('is-active', active);
+        pixelPortrait.setAttribute('aria-pressed', String(active));
+        pixelDetails?.setAttribute('aria-hidden', String(!active));
+      }, reduced ? 0 : 170);
+      portraitTimer = window.setTimeout(() => pixelPortrait.classList.remove('is-transitioning'), reduced ? 0 : 520);
+    }
+
+    if (finePointer) {
+      pixelPortrait.addEventListener('pointerenter', () => setPortraitState(true));
+      pixelPortrait.addEventListener('pointerleave', () => setPortraitState(false));
+      pixelPortrait.addEventListener('focus', () => setPortraitState(true));
+      pixelPortrait.addEventListener('blur', () => setPortraitState(false));
+    } else {
+      pixelPortrait.addEventListener('click', () => setPortraitState(!portraitActive));
+    }
+    pixelPortrait.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        setPortraitState(!portraitActive);
+      }
+    });
+  }
+
   /* Add reusable motion hooks while preserving no-JS visibility. */
   document.querySelectorAll('.section-label').forEach((element) => element.classList.add('reveal'));
   document.querySelectorAll('#about .col-left, #experience .col-left, #skills .col-left, #awards .col-left')
